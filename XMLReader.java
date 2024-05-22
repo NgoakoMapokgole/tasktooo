@@ -5,6 +5,30 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import java.io.File;
+import java.util.Scanner;
+
+// Add these lines to the main method after reading the XML
+Scanner scanner = new Scanner(System.in);
+System.out.println("Enter the fields you want to print (comma separated):");
+String input = scanner.nextLine();
+String[] fields = input.split(",");
+
+for (int i = 0; i < nList.getLength(); i++) {
+    Node nNode = nList.item(i);
+    System.out.println("\nCurrent Element: " + nNode.getNodeName());
+    if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+        Element eElement = (Element) nNode;
+        for (String field : fields) {
+            field = field.trim();
+            try {
+                System.out.println(field + ": " + eElement.getElementsByTagName(field).item(0).getTextContent());
+            } catch (Exception e) {
+                System.out.println("Field " + field + " not found");
+            }
+        }
+    }
+}
+scanner.close();
 
 public class XMLReader {
     public static void main(String[] args) {
