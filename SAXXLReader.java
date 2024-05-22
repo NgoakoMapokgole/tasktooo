@@ -70,7 +70,7 @@ public class SAXXMLReader {
                 }
             };
 
-            saxParser.parse("path/to/your/file.xml", handler);
+            saxParser.parse("/workspaces/tasktooo/xmlfile.xml", handler);
 
         } catch (Exception e) {
             e.printStackTrace();
