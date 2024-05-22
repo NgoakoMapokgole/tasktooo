@@ -84,5 +84,18 @@ for (int i = 0; i < nList.getLength(); i++) {
 }
 System.out.println(jsonObject.toJSONString());
 
+if (input.trim().isEmpty()) {
+    System.out.println("No fields entered.");
+    scanner.close();
+    return;
+}
+
+for (String field : fields) {
+    if (field.trim().isEmpty()) {
+        System.out.println("Invalid field: " + field);
+        scanner.close();
+        return;
+    }
+}
     }
 }
